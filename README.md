@@ -1,2 +1,2 @@
-# mediporta-
-An application created for the recruitment task for Mediporta  Sp.z.o.o.
+Aplikacja stworzona na potrzeby zadania rekrutacyjnego dla firmy Mediporta Sp.z.o.o.
+
