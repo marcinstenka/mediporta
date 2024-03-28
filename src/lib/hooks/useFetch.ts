@@ -10,10 +10,11 @@ export default function useFetch() {
 	const pageSize = 10;
 	const order = 'desc';
 	const sort = 'popular';
+	const page = 1;
 	const [data, setData] = useState<Data | null>(null);
 	useEffect(() => {
 		const res = fetch(
-			`https://api.stackexchange.com/2.3/tags?pagesize=${pageSize}&order=${order}&sort=${sort}&site=stackoverflow`
+			`https://api.stackexchange.com/2.3/tags?page=${page}&pagesize=${pageSize}&order=${order}&sort=${sort}&site=stackoverflow`
 		);
 		res.then((d) => d.json()).then((d) => setData(d));
 	}, []);
