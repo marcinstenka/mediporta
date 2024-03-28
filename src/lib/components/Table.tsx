@@ -8,6 +8,11 @@ import {
 	TableHead,
 	TablePagination,
 	TableRow,
+	Input,
+	Select,
+	InputLabel,
+	MenuItem,
+	TextField,
 } from '@mui/material';
 import useFetch from '../hooks/useFetch.ts';
 
@@ -19,23 +24,41 @@ export default function TagTable() {
 		<>
 			<div>
 				<div>
-					<label htmlFor='count'>Tags per page:</label>
-					<input type='text' name='count' id='count' />
+					<InputLabel id='count'>Tags per page:</InputLabel>
+					<Input
+						type='number'
+						name='count'
+						id='count'
+						defaultValue={10}
+						inputProps={{ min: 1, max: 100 }}
+					/>
 				</div>
 				<div>
-					<label htmlFor='order'>Order:</label>
-					<select name='order' id='order'>
-						<option value='desc'>Desc</option>
-						<option value='asc'>Asc</option>
-					</select>
+					<TextField
+						select
+						id='order'
+						label='Order'
+						defaultValue={'desc'}
+						variant='filled'
+						sx={{ width: 100 }}
+					>
+						<MenuItem value={'desc'}>Desc</MenuItem>
+						<MenuItem value={'asc'}>Asc</MenuItem>
+					</TextField>
 				</div>
 				<div>
-					<label htmlFor='sort'>Sort:</label>
-					<select name='sort' id='sort'>
-						<option value='popular'>Popular</option>
-						<option value='activity'>Activity</option>
-						<option value='name'>Name</option>
-					</select>
+					<TextField
+						select
+						id='sort'
+						label='Sort'
+						defaultValue={'popular'}
+						variant='filled'
+						sx={{ width: 150 }}
+					>
+						<MenuItem value={'popular'}>Popular</MenuItem>
+						<MenuItem value={'activity'}>Activity</MenuItem>
+						<MenuItem value={'name'}>Name</MenuItem>
+					</TextField>
 				</div>
 			</div>
 			<TableContainer
