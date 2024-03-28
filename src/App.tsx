@@ -1,13 +1,10 @@
 import React from 'react';
 
 import './App.css';
+import Table from './lib/components/Table.tsx';
 
 function App() {
-	return (
-		<div>
-			<h1>Hello</h1>
-		</div>
-	);
+	return <Table />;
 }
 
 export default App;
