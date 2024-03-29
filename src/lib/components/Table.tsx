@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import useFetch from '../hooks/useFetch.ts';
 import Inputs from './Inputs.tsx';
+import TableArrows from './TableArrows.tsx';
 
 export default function TagTable() {
 	const rows = useFetch();
@@ -21,25 +22,26 @@ export default function TagTable() {
 			<Inputs />
 			<TableContainer
 				component={Paper}
-				sx={{ minWidth: 650, maxWidth: 900, margin: '0 auto' }}
+				sx={{ maxWidth: 400, margin: '0 auto' }}
 			>
 				<Table aria-label='simple table'>
 					<TableHead>
 						<TableRow>
-							<TableCell align='right'>Name</TableCell>
-							<TableCell align='right'>Count</TableCell>
+							<TableCell sx={{ fontWeight: 'bold' }}>Name</TableCell>
+							<TableCell sx={{ fontWeight: 'bold' }}>Count</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
 						{rows.map((row) => (
 							<TableRow>
-								<TableCell align='right'>{row.name}</TableCell>
-								<TableCell align='right'>{row.count}</TableCell>
+								<TableCell>{row.name}</TableCell>
+								<TableCell>{row.count}</TableCell>
 							</TableRow>
 						))}
 					</TableBody>
 				</Table>
 			</TableContainer>
+			<TableArrows />
 		</>
 	);
 }

@@ -7,8 +7,9 @@ export default function Inputs() {
 		handlePageChange,
 		handleSortChange,
 		handleOrderChange,
+		page,
+        maxPage
 	} = useTableOptions();
-
 	return (
 		<div className='inputs'>
 			<div className='input_container'>
@@ -19,7 +20,7 @@ export default function Inputs() {
 					InputProps={{ inputProps: { min: 1, max: 100 } }}
 					variant='filled'
 					defaultValue={10}
-					sx={{ width: 100 }}
+					sx={{ width: 120 }}
 					onChange={handleTagsPerPageChange}
 				/>
 			</div>
@@ -28,11 +29,12 @@ export default function Inputs() {
 					id='page'
 					label='Page'
 					type='number'
-					InputProps={{ inputProps: { min: 1 } }}
+					InputProps={{ inputProps: { min: 1, max: maxPage } }}
 					variant='filled'
 					defaultValue={1}
-					sx={{ width: 100 }}
+					sx={{ width: 120 }}
 					onChange={handlePageChange}
+					value={page}
 				/>
 			</div>
 			<div className='input_container'>
@@ -42,7 +44,7 @@ export default function Inputs() {
 					label='Order'
 					defaultValue={'desc'}
 					variant='filled'
-					sx={{ width: 100 }}
+					sx={{ width: 120 }}
 					onChange={handleOrderChange}
 				>
 					<MenuItem value={'desc'}>Desc</MenuItem>
@@ -56,7 +58,7 @@ export default function Inputs() {
 					label='Sort'
 					defaultValue={'popular'}
 					variant='filled'
-					sx={{ width: 150 }}
+					sx={{ width: 120 }}
 					onChange={handleSortChange}
 				>
 					<MenuItem value={'popular'}>Popular</MenuItem>
