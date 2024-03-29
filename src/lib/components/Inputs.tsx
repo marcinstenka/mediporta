@@ -1,6 +1,14 @@
 import { MenuItem, TextField } from '@mui/material';
 import React from 'react';
+import useTableOptions from '../hooks/useTableOptions.ts';
 export default function Inputs() {
+	const {
+		handleTagsPerPageChange,
+		handlePageChange,
+		handleSortChange,
+		handleOrderChange,
+	} = useTableOptions();
+
 	return (
 		<div className='inputs'>
 			<div className='input_container'>
@@ -12,6 +20,7 @@ export default function Inputs() {
 					variant='filled'
 					defaultValue={10}
 					sx={{ width: 100 }}
+					onChange={handleTagsPerPageChange}
 				/>
 			</div>
 			<div className='input_container'>
@@ -23,6 +32,7 @@ export default function Inputs() {
 					variant='filled'
 					defaultValue={1}
 					sx={{ width: 100 }}
+					onChange={handlePageChange}
 				/>
 			</div>
 			<div className='input_container'>
@@ -33,6 +43,7 @@ export default function Inputs() {
 					defaultValue={'desc'}
 					variant='filled'
 					sx={{ width: 100 }}
+					onChange={handleOrderChange}
 				>
 					<MenuItem value={'desc'}>Desc</MenuItem>
 					<MenuItem value={'asc'}>Asc</MenuItem>
@@ -46,6 +57,7 @@ export default function Inputs() {
 					defaultValue={'popular'}
 					variant='filled'
 					sx={{ width: 150 }}
+					onChange={handleSortChange}
 				>
 					<MenuItem value={'popular'}>Popular</MenuItem>
 					<MenuItem value={'activity'}>Activity</MenuItem>
