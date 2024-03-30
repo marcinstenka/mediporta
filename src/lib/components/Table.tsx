@@ -9,11 +9,13 @@ import {
 	TableRow,
 } from '@mui/material';
 import useFetch from '../hooks/useFetch.ts';
-import useTableOptions from '../hooks/useTableOptions.ts';
+import useTableContentContext from '../hooks/useTableContentContext.ts';
 
 export default function TagTable() {
-	const rows = useFetch();
-	if (!rows) return <h2>Loading...</h2>;
+	useFetch();
+	const { tags } = useTableContentContext();
+	console.log(tags);
+	if (!tags) return <h2>Loading...</h2>;
 	return (
 		<>
 			<TableContainer
@@ -28,7 +30,7 @@ export default function TagTable() {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{rows.map((row) => (
+						{tags.map((row) => (
 							<TableRow>
 								<TableCell>{row.name}</TableCell>
 								<TableCell>{row.count}</TableCell>
