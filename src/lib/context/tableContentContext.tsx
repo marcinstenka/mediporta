@@ -6,9 +6,11 @@ type tableContentContextProviderProps = {
 };
 type TableContentState = {
 	tags: Tag[] | null;
+	error: string;
 };
 type TableContentActions = {
 	setTags(tags: TableContentState['tags']): void;
+	setError(error: TableContentState['error']): void;
 };
 type TableContentType = TableContentState & TableContentActions;
 
@@ -19,10 +21,12 @@ export default function TableContentContextProvider({
 }: tableContentContextProviderProps) {
 	const [state, setState] = useState<TableContentState>({
 		tags: null,
+		error: '',
 	});
 	const value: TableContentType = {
 		...state,
 		setTags: (tags) => setState((prev) => ({ ...prev, tags })),
+		setError: (error) => setState((prev) => ({ ...prev, error })),
 	};
 	return (
 		<TableContentContext.Provider value={value}>

@@ -10,10 +10,14 @@ import {
 } from '@mui/material';
 import useTableContentContext from '../hooks/useTableContentContext.ts';
 import Loader from './Loader.tsx';
+import NoResults from './NoResults.tsx';
+import Error from './Error.tsx';
 
 export default function TagTable() {
-	const { tags } = useTableContentContext();
+	const { tags, error } = useTableContentContext();
 	if (!tags) return <Loader />;
+	if (tags.length == 0) return <NoResults />;
+	if (error) return <Error />;
 	return (
 		<>
 			<TableContainer
