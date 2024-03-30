@@ -8,19 +8,17 @@ import {
 	TableHead,
 	TableRow,
 } from '@mui/material';
-import useFetch from '../hooks/useFetch.ts';
 import useTableContentContext from '../hooks/useTableContentContext.ts';
+import Loader from './Loader.tsx';
 
 export default function TagTable() {
-	useFetch();
 	const { tags } = useTableContentContext();
-	console.log(tags);
-	if (!tags) return <h2>Loading...</h2>;
+	if (!tags) return <Loader />;
 	return (
 		<>
 			<TableContainer
 				component={Paper}
-				sx={{ maxWidth: 400, margin: '0 auto' }}
+				sx={{ maxWidth: 450, margin: '0 auto' }}
 			>
 				<Table aria-label='simple table'>
 					<TableHead>
@@ -32,8 +30,8 @@ export default function TagTable() {
 					<TableBody>
 						{tags.map((row) => (
 							<TableRow>
-								<TableCell>{row.name}</TableCell>
-								<TableCell>{row.count}</TableCell>
+								<TableCell sx={{ width: '50%' }}>{row.name}</TableCell>
+								<TableCell sx={{ width: '50%' }}>{row.count}</TableCell>
 							</TableRow>
 						))}
 					</TableBody>
