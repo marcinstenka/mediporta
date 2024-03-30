@@ -3,6 +3,7 @@ import useTableOptionsContext from './useTableOptionsContext.ts';
 export default function useTableOptions() {
 	const { setTagsPerPage, setPage, setSort, setOrder, page } =
 		useTableOptionsContext();
+
 	const handleTagsPerPageChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setTagsPerPage(parseInt(e.target.value));
 	};
@@ -21,13 +22,11 @@ export default function useTableOptions() {
 			setOrder(value);
 		}
 	};
-    const maxPage = page / 6580;
 	return {
 		handleTagsPerPageChange,
 		handlePageChange,
 		handleSortChange,
 		handleOrderChange,
 		page,
-		maxPage,
 	};
 }

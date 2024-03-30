@@ -9,29 +9,34 @@ import {
 	TableRow,
 } from '@mui/material';
 import useFetch from '../hooks/useFetch.ts';
+import useTableOptions from '../hooks/useTableOptions.ts';
 
 export default function TagTable() {
 	const rows = useFetch();
-
 	if (!rows) return <h2>Loading...</h2>;
 	return (
-		<TableContainer component={Paper} sx={{ maxWidth: 400, margin: '0 auto' }}>
-			<Table aria-label='simple table'>
-				<TableHead>
-					<TableRow>
-						<TableCell sx={{ fontWeight: 'bold' }}>Name</TableCell>
-						<TableCell sx={{ fontWeight: 'bold' }}>Count</TableCell>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{rows.map((row) => (
+		<>
+			<TableContainer
+				component={Paper}
+				sx={{ maxWidth: 400, margin: '0 auto' }}
+			>
+				<Table aria-label='simple table'>
+					<TableHead>
 						<TableRow>
-							<TableCell>{row.name}</TableCell>
-							<TableCell>{row.count}</TableCell>
+							<TableCell sx={{ fontWeight: 'bold' }}>Name</TableCell>
+							<TableCell sx={{ fontWeight: 'bold' }}>Count</TableCell>
 						</TableRow>
-					))}
-				</TableBody>
-			</Table>
-		</TableContainer>
+					</TableHead>
+					<TableBody>
+						{rows.map((row) => (
+							<TableRow>
+								<TableCell>{row.name}</TableCell>
+								<TableCell>{row.count}</TableCell>
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</TableContainer>
+		</>
 	);
 }

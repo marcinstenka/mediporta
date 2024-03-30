@@ -8,7 +8,6 @@ export default function Inputs() {
 		handleSortChange,
 		handleOrderChange,
 		page,
-        maxPage
 	} = useTableOptions();
 	return (
 		<div className='inputs'>
@@ -29,7 +28,7 @@ export default function Inputs() {
 					id='page'
 					label='Page'
 					type='number'
-					InputProps={{ inputProps: { min: 1, max: maxPage } }}
+					InputProps={{ inputProps: { min: 1 } }}
 					variant='filled'
 					defaultValue={1}
 					sx={{ width: 120 }}
