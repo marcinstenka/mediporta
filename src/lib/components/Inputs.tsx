@@ -1,14 +1,15 @@
 import { MenuItem, TextField } from '@mui/material';
 import React from 'react';
-import useTableOptions from '../hooks/useTableOptions.ts';
+import useTableOptionsHandlers from '../hooks/useTableOptionsHandlers.ts';
+import useTableOptionsContext from '../hooks/useTableOptionsContext.ts';
 export default function Inputs() {
 	const {
 		handleTagsPerPageChange,
 		handlePageChange,
 		handleSortChange,
 		handleOrderChange,
-		page,
-	} = useTableOptions();
+	} = useTableOptionsHandlers();
+	const { page } = useTableOptionsContext();
 	return (
 		<div className='inputs'>
 			<div className='input_container'>

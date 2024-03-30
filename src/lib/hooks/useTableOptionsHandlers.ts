@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 import useTableOptionsContext from './useTableOptionsContext.ts';
-export default function useTableOptions() {
-	const { setTagsPerPage, setPage, setSort, setOrder, page } =
+export default function useTableOptionsHandlers() {
+	const { setTagsPerPage, setPage, setSort, setOrder } =
 		useTableOptionsContext();
 
 	const handleTagsPerPageChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +27,5 @@ export default function useTableOptions() {
 		handlePageChange,
 		handleSortChange,
 		handleOrderChange,
-		page,
 	};
 }
