@@ -8,7 +8,6 @@ import {
 	TableHead,
 	TableRow,
 } from '@mui/material';
-import useTableContentContext from '../hooks/useTableContentContext.ts';
 import Loader from './Loader.tsx';
 import NoResults from './NoResults.tsx';
 import Error from './Error.tsx';
@@ -22,7 +21,7 @@ type TagTableProps = {
 export default function TagTable({ tags, error }: TagTableProps) {
 	if (error) return <Error />;
 	if (!tags) return <Loader />;
-	if (tags.length == 0) return <NoResults />;
+	if (tags.length === 0) return <NoResults />;
 	return (
 		<>
 			<TableContainer
@@ -37,8 +36,8 @@ export default function TagTable({ tags, error }: TagTableProps) {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{tags.map((row) => (
-							<TableRow>
+						{tags.map((row, index) => (
+							<TableRow key={index}>
 								<TableCell sx={{ width: '50%' }}>{row.name}</TableCell>
 								<TableCell sx={{ width: '50%' }}>{row.count}</TableCell>
 							</TableRow>

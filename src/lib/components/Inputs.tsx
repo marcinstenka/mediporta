@@ -1,5 +1,5 @@
-import { MenuItem, TextField } from '@mui/material';
 import React from 'react';
+import { MenuItem, TextField } from '@mui/material';
 import useTableOptionsHandlers from '../hooks/useTableOptionsHandlers.ts';
 import useTableOptionsContext from '../hooks/useTableOptionsContext.ts';
 export default function Inputs() {
@@ -19,7 +19,6 @@ export default function Inputs() {
 					type='number'
 					InputProps={{ inputProps: { min: 1, max: 100 } }}
 					variant='filled'
-					defaultValue={10}
 					sx={{ width: 120 }}
 					onChange={handleTagsPerPageChange}
 					value={tagsPerPage}
@@ -32,7 +31,6 @@ export default function Inputs() {
 					type='number'
 					InputProps={{ inputProps: { min: 1, max: 70000 } }}
 					variant='filled'
-					defaultValue={1}
 					sx={{ width: 120 }}
 					onChange={handlePageChange}
 					value={page}

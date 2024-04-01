@@ -5,7 +5,7 @@ const API_KEY = 'IGLUsAB63XEtW3MS7RLTQw((';
 
 export default function useFetch() {
 	const { page, order, sort, tagsPerPage } = useTableOptionsContext();
-	const { setTags, setError, error } = useTableContentContext();
+	const { setTags, setError } = useTableContentContext();
 	const [fetchTimeout, setFetchTimeout] = useState<NodeJS.Timeout>();
 
 	useEffect(() => {
@@ -20,17 +20,15 @@ export default function useFetch() {
 		if (tagsPerPage > 100) {
 			tagsPerPageNumber = 100;
 		}
-
 		if (fetchTimeout) {
 			clearTimeout(fetchTimeout);
 		}
-
 		const timeout = setTimeout(() => {
 			fetch(
 				`https://api.stackexchange.com/2.3/tags?page=${pageNumber}&pagesize=${tagsPerPageNumber}&order=${order}&sort=${sort}&site=stackoverflow&key=${API_KEY}`
 			)
 				.then((response) => {
-					if (response.status != 200) {
+					if (response.status !== 200) {
 						throw new Error('Network response was not ok');
 					}
 					return response.json();

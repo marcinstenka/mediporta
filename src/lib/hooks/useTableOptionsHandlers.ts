@@ -3,7 +3,6 @@ import useTableOptionsContext from './useTableOptionsContext.ts';
 export default function useTableOptionsHandlers() {
 	const { setTagsPerPage, setPage, setSort, setOrder } =
 		useTableOptionsContext();
-
 	const handleTagsPerPageChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const value = parseInt(e.target.value);
 		if (value < 1) {
