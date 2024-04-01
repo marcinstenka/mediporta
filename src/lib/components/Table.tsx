@@ -12,9 +12,14 @@ import useTableContentContext from '../hooks/useTableContentContext.ts';
 import Loader from './Loader.tsx';
 import NoResults from './NoResults.tsx';
 import Error from './Error.tsx';
+import { Tag } from '../types/Types.ts';
 
-export default function TagTable() {
-	const { tags, error } = useTableContentContext();
+type TagTableProps = {
+	tags: Tag[] | null;
+	error: string;
+};
+
+export default function TagTable({ tags, error }: TagTableProps) {
 	if (!tags) return <Loader />;
 	if (tags.length == 0) return <NoResults />;
 	if (error) return <Error />;

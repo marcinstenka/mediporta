@@ -9,10 +9,11 @@ import useTableContentContext from './lib/hooks/useTableContentContext.ts';
 
 function App() {
 	useFetch();
+	const { tags, error } = useTableContentContext();
 	return (
 		<>
 			<Inputs />
-			<Table />
+			<Table {...{ tags, error }} />
 			<TableArrows />
 		</>
 	);
