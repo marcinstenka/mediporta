@@ -7,8 +7,16 @@ export default function useFetch() {
 	const { setTags, setError } = useTableContentContext();
 
 	useEffect(() => {
+		let pageNumber = 1;
+		let tagsPerPageNumber = 1;
+		if (page) {
+			pageNumber = page;
+		}
+		if (tagsPerPage) {
+			tagsPerPageNumber = tagsPerPage;
+		}
 		fetch(
-			`https://api.stackexchange.com/2.3/tags?page=${page}&pagesize=${tagsPerPage}&order=${order}&sort=${sort}&site=stackoverflow&key=IGLUsAB63XEtW3MS7RLTQw((`
+			`https://api.stackexchange.com/2.3/tags?page=${pageNumber}&pagesize=${tagsPerPageNumber}&order=${order}&sort=${sort}&site=stackoverflow&key=IGLUsAB63XEtW3MS7RLTQw((`
 		)
 			.then((response) => {
 				if (!response.ok) {
