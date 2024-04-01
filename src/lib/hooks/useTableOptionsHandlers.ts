@@ -5,10 +5,22 @@ export default function useTableOptionsHandlers() {
 		useTableOptionsContext();
 
 	const handleTagsPerPageChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setTagsPerPage(parseInt(e.target.value));
+		const value = parseInt(e.target.value);
+		if (value < 1 || !value) {
+			setTagsPerPage(1);
+		} else if (value > 100) {
+			setTagsPerPage(100);
+		} else {
+			setTagsPerPage(value);
+		}
 	};
 	const handlePageChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setPage(parseInt(e.target.value));
+		const value = parseInt(e.target.value);
+		if (value < 1 || !value) {
+			setPage(1);
+		} else {
+			setPage(value);
+		}
 	};
 	const handleSortChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { value } = e.target;

@@ -9,7 +9,7 @@ export default function Inputs() {
 		handleSortChange,
 		handleOrderChange,
 	} = useTableOptionsHandlers();
-	const { page } = useTableOptionsContext();
+	const { page, tagsPerPage } = useTableOptionsContext();
 	return (
 		<div className='inputs'>
 			<div className='input_container'>
@@ -22,6 +22,7 @@ export default function Inputs() {
 					defaultValue={10}
 					sx={{ width: 120 }}
 					onChange={handleTagsPerPageChange}
+					value={tagsPerPage}
 				/>
 			</div>
 			<div className='input_container'>

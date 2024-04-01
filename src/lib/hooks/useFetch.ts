@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import useTableOptionsContext from './useTableOptionsContext.ts';
 import useTableContentContext from './useTableContentContext.ts';
+const API_KEY = 'IGLUsAB63XEtW3MS7RLTQw((';
 
 export default function useFetch() {
 	const { page, order, sort, tagsPerPage } = useTableOptionsContext();
@@ -15,8 +16,11 @@ export default function useFetch() {
 		if (tagsPerPage) {
 			tagsPerPageNumber = tagsPerPage;
 		}
+		if (tagsPerPage > 100) {
+			tagsPerPageNumber = 100;
+		}
 		fetch(
-			`https://api.stackexchange.com/2.3/tags?page=${pageNumber}&pagesize=${tagsPerPageNumber}&order=${order}&sort=${sort}&site=stackoverflow&key=IGLUsAB63XEtW3MS7RLTQw((`
+			`https://api.stackexchange.com/2.3/tags?page=${pageNumber}&pagesize=${tagsPerPageNumber}&order=${order}&sort=${sort}&site=stackoverflow&key=${API_KEY}`
 		)
 			.then((response) => {
 				if (!response.ok) {
