@@ -20,9 +20,9 @@ type TagTableProps = {
 };
 
 export default function TagTable({ tags, error }: TagTableProps) {
+	if (error) return <Error />;
 	if (!tags) return <Loader />;
 	if (tags.length == 0) return <NoResults />;
-	if (error) return <Error />;
 	return (
 		<>
 			<TableContainer

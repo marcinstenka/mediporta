@@ -30,7 +30,7 @@ export default function Inputs() {
 					id='page'
 					label='Page'
 					type='number'
-					InputProps={{ inputProps: { min: 1 } }}
+					InputProps={{ inputProps: { min: 1, max: 70000 } }}
 					variant='filled'
 					defaultValue={1}
 					sx={{ width: 120 }}

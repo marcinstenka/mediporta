@@ -6,7 +6,7 @@ export default function useTableOptionsHandlers() {
 
 	const handleTagsPerPageChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const value = parseInt(e.target.value);
-		if (value < 1 || !value) {
+		if (value < 1) {
 			setTagsPerPage(1);
 		} else if (value > 100) {
 			setTagsPerPage(100);
@@ -16,8 +16,10 @@ export default function useTableOptionsHandlers() {
 	};
 	const handlePageChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const value = parseInt(e.target.value);
-		if (value < 1 || !value) {
+		if (value < 1) {
 			setPage(1);
+		} else if (value > 70000) {
+			setPage(70000);
 		} else {
 			setPage(value);
 		}
